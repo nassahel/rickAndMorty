@@ -21,7 +21,7 @@ const handleCloseSession = () => {
                 <img src={rmgif} alt="rik and morty" className='w-24' />
             </div>
             <div className=' w-[20rem] flex flex-col items-end mt-10 xl:mt-0'>
-                <button onClick={handleCloseSession} className='text-white ms-auto border rounded-full border-white px-3 mb-2'>Cerrar Sesión</button>
+                <button onClick={handleCloseSession} className='text-white ms-auto border rounded-full hover:bg-red-600 duration-300 border-white px-3 mb-2'>Cerrar Sesión</button>
                 <input
                     onChange={(e) => setSearchInput(e.target.value)}
                     value={searchInput}

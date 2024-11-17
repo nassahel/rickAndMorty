@@ -83,13 +83,13 @@ const Home = () => {
                                 setGender('');
                                 setSpecies('');
                             }}
-                            className='border px-3 hover:bg-neutral-300 duration-150 border-neutral-600'
+                            className='border px-3 hover:bg-green-500 duration-150 border-neutral-600 rounded-full'
                         >
                             Limpiar filtros
                         </button>
                     )}
                 </div>
-                <Link to="/add" className='border border-neutral-600 px-3 hover:bg-neutral-500 duration-200 rounded-full'>
+                <Link to="/add" className='border border-neutral-600 px-3 hover:bg-green-500 duration-200 rounded-full'>
                     Agregar/Editar personajes
                 </Link>
             </div>
@@ -101,9 +101,9 @@ const Home = () => {
             </div>
 
             <div className='flex mx-auto mt-auto w-fit py-5 font-semibold'>
-                <button onClick={previousPage}>Anterior</button>
+                <button className='hover:text-green-400' onClick={previousPage}>Anterior</button>
                 <p className='bg-neutral-200 px-3 text-black flex items-center w-5 justify-center mx-2 text-sm rounded-full'>{page}</p>
-                <button onClick={nextPage}>Siguiente</button>
+                <button className='hover:text-green-400' onClick={nextPage}>Siguiente</button>
             </div>
         </div>
     );
