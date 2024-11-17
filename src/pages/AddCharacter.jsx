@@ -72,6 +72,8 @@ const AddCharacter = () => {
                         onChange={handleChange}
                         placeholder="Nombre"
                         className='rounded-full px-2'
+                        required
+                        maxLength={100}
                     />
                     <input
                         type="text"
@@ -80,15 +82,17 @@ const AddCharacter = () => {
                         onChange={handleChange}
                         placeholder="Planeta"
                         className='rounded-full px-2'
+                        required
+                        maxLength={100}
 
                     />
-                    <select   name="species" value={character.species} onChange={handleChange}   className='rounded-full px-2' >
+                    <select required name="species" value={character.species} onChange={handleChange}   className='rounded-full px-2' >
                         <option value="">Seleccionar Especie</option>
                         <option value="human">Humano</option>
                         <option value="humanoid">Humanoide</option>
                         <option value="alien">Alien</option>
                     </select>
-                    <select name="gender" value={character.gender} onChange={handleChange}  className='rounded-full px-2'>
+                    <select required name="gender" value={character.gender} onChange={handleChange}  className='rounded-full px-2'>
                         <option value="">Seleccionar Género</option>
                         <option value="male">Hombre</option>
                         <option value="female">Mujer</option>
@@ -102,6 +106,7 @@ const AddCharacter = () => {
                         onChange={handleChange}
                         placeholder="Link de Imagen"
                         className='rounded-full px-2'
+                        required
                     />
                 </div>
                 <div className='flex w-full justify-between gap-4'>
