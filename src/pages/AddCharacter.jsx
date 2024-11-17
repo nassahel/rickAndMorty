@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CharCard from '../components/CharCard';
+import { Link } from 'react-router-dom';
 
 const AddCharacter = () => {
     const [character, setCharacter] = useState({
@@ -35,37 +36,42 @@ const AddCharacter = () => {
     };
 
     const handleSave = () => {
-        const updatedCharacters = [...addedCharacters];
-        if (editingIndex !== null) {
-            updatedCharacters[editingIndex] = character;
-        } else {
-            updatedCharacters.push(character);
+        if (character.name !== '' && character.species !== '' && character.gender !== '' && character.location.name !== '' && character.image !== '') {
+            const updatedCharacters = [...addedCharacters];
+            if (editingIndex !== null) {
+                updatedCharacters[editingIndex] = character;
+            } else {
+                updatedCharacters.push(character);
+            }
+            localStorage.setItem('addedCharacters', JSON.stringify(updatedCharacters));
+            setAddedCharacters(updatedCharacters);
+            setCharacter({ name: '', species: '', gender: '', location: { name: '' }, image: '' });
+            setEditingIndex(null);
         }
-        localStorage.setItem('addedCharacters', JSON.stringify(updatedCharacters));
-        setAddedCharacters(updatedCharacters);
-        setCharacter({ name: '', species: '', gender: '', location: { name: '' }, image: '' });
-        setEditingIndex(null);
+
     };
 
     const handleEdit = (index) => {
-        setCharacter(addedCharacters[index]);
-        setEditingIndex(index);
+            setCharacter(addedCharacters[index]);
+            setEditingIndex(index);
+
     };
 
     return (
         <div className="flex flex-col items-center bg-purple-950 min-h-screen p-4">
             <h1 className='text-white text-4xl font-semibold mb-10'>Agregar/ Editar personajes</h1>
-            <div className="flex flex-col items-center border-purple-800 bg-purple-400 py-2 px-10 ">
+            <div className="flex flex-col items-center border-2 border-neutral-200 bg-purple-400 py-2 px-2 xl:px-10 rounded-xl ">
                 <h2 className="text-center mb-2 font-semibold">
                     {editingIndex !== null ? 'Editar Personaje' : 'Agregar Personaje'}
                 </h2>
-                <div className="flex gap-4 my-3">
+                <div className="flex flex-col lg:flex-row flex-wrap gap-4 my-3">
                     <input
                         type="text"
                         name="name"
                         value={character.name}
                         onChange={handleChange}
                         placeholder="Nombre"
+                        className='rounded-full px-2'
                     />
                     <input
                         type="text"
@@ -73,14 +79,16 @@ const AddCharacter = () => {
                         value={character.location.name}
                         onChange={handleChange}
                         placeholder="Planeta"
+                        className='rounded-full px-2'
+
                     />
-                    <select name="species" value={character.species} onChange={handleChange}>
+                    <select   name="species" value={character.species} onChange={handleChange}   className='rounded-full px-2' >
                         <option value="">Seleccionar Especie</option>
                         <option value="human">Humano</option>
                         <option value="humanoid">Humanoide</option>
                         <option value="alien">Alien</option>
                     </select>
-                    <select name="gender" value={character.gender} onChange={handleChange}>
+                    <select name="gender" value={character.gender} onChange={handleChange}  className='rounded-full px-2'>
                         <option value="">Seleccionar Género</option>
                         <option value="male">Hombre</option>
                         <option value="female">Mujer</option>
@@ -93,19 +101,23 @@ const AddCharacter = () => {
                         value={character.image}
                         onChange={handleChange}
                         placeholder="Link de Imagen"
+                        className='rounded-full px-2'
                     />
                 </div>
+                <div className='flex w-full justify-between gap-4'>
+                    <Link to="/home" className="border bg-black text-white border-neutral-600 mt-5 px-3 rounded-full" >Volver al home</Link>
+                    <button className="border bg-purple-700 text-white border-neutral-600 mt-5 px-3 rounded-full" onClick={handleSave}>
+                        {editingIndex !== null ? 'Guardar Cambios' : 'Agregar Personaje'}
+                    </button>
+                </div>
 
-                <button className="border bg-purple-700 text-white border-neutral-600 mt-5 px-3" onClick={handleSave}>
-                    {editingIndex !== null ? 'Guardar Cambios' : 'Agregar Personaje'}
-                </button>
             </div>
 
             <div className="w-full">
                 <h2 className='text-center text-white mt-14 mb-6 text-3xl font-semibold'>Lista de Personajes agregados</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 p-4'>
                     {addedCharacters.length === 0 ? (
-                        <p>No hay personajes agregados.</p>
+                        <p className='text-center mt-10 text-white'>No hay personajes agregados.</p>
                     ) : (
                         addedCharacters.map((item, index) => (
                             <CharCard

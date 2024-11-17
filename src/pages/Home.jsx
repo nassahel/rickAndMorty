@@ -43,18 +43,20 @@ const Home = () => {
         page > 1 && setPage(page - 1);
     };
 
+    
+
     return (
         <div className='bg-purple-950 min-h-screen text-white flex flex-col'>
             <Header searchInput={searchInput} setSearchInput={setSearchInput} />
-            <div className='flex items-center justify-between mt-10 px-4'>
-                <div className='flex items-center gap-4'>
+            <div className='flex flex-col lg:flex-row gap-4 items-center justify-between mt-10 px-4'>
+                <div className='flex flex-col lg:flex-row items-center gap-4'>
                     <p>Filtrar por :</p>
                     <select
                         name="especie"
                         value={species}
                         onChange={(e) => setSpecies(e.target.value)}
                         id="especie"
-                        className='border text-black border-neutral-500 w-56'
+                        className='border text-black border-neutral-500 w-56 rounded-full px-2'
                     >
                         <option value="">Especie</option>
                         <option value="human">Humano</option>
@@ -66,7 +68,7 @@ const Home = () => {
                         onChange={(e) => setGender(e.target.value)}
                         name="genero"
                         id="genero"
-                        className='border text-black border-neutral-500 w-56'
+                        className='border text-black border-neutral-500 w-56 rounded-full px-2'
                     >
                         <option value="">Genero</option>
                         <option value="male">Hombre</option>
@@ -87,8 +89,8 @@ const Home = () => {
                         </button>
                     )}
                 </div>
-                <Link to="/add" className='border border-neutral-600 px-3 hover:bg-neutral-300 duration-200'>
-                    Agregar/Editar
+                <Link to="/add" className='border border-neutral-600 px-3 hover:bg-neutral-500 duration-200 rounded-full'>
+                    Agregar/Editar personajes
                 </Link>
             </div>
 
@@ -100,7 +102,7 @@ const Home = () => {
 
             <div className='flex mx-auto mt-auto w-fit py-5 font-semibold'>
                 <button onClick={previousPage}>Anterior</button>
-                <p className='border border-neutral-600 px-2 mx-2 text-sm'>{page}</p>
+                <p className='bg-neutral-200 px-3 text-black flex items-center w-5 justify-center mx-2 text-sm rounded-full'>{page}</p>
                 <button onClick={nextPage}>Siguiente</button>
             </div>
         </div>

@@ -7,11 +7,6 @@ import ResgisterForm from '../components/ResgisterForm'
 
 
 const Login = () => {
-    
-
-
-
-
     return (
         <div className='flex h-screen bg-purple-950'>
             <div className='w-1/2 flex flex-col gap-10 items-center justify-center'>

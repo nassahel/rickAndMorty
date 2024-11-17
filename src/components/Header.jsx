@@ -1,23 +1,33 @@
 import React from 'react'
 import title from '../assets/img/title.png'
 import rmgif from '../assets/img/rm.gif'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Header = ({ searchInput, setSearchInput }) => {
+    const navigate = useNavigate()
+
+const handleCloseSession = () => {
+    localStorage.removeItem('LSloggedUser')
+    navigate('/')
+}
+
+
     return (
-        <div className='flex items-end justify-between pe-5 py-5 text-black bg-neutral-900'>
+        <div className='flex flex-col lg:flex-row items-end justify-between pe-5 py-5 text-black bg-neutral-900'>
             <div className='flex items-center'>
                 <img src={title} alt="Title: Rick and Morty" className='w-[15rem]' />
                 <img src={rmgif} alt="rik and morty" className='w-24' />
             </div>
-            <div className=' w-[20rem]'>
+            <div className=' w-[20rem] flex flex-col items-end mt-10 xl:mt-0'>
+                <button onClick={handleCloseSession} className='text-white ms-auto border rounded-full border-white px-3 mb-2'>Cerrar Sesión</button>
                 <input
                     onChange={(e) => setSearchInput(e.target.value)}
                     value={searchInput}
                     type="text"
                     placeholder='Buscar personaje...'
-                    className=' w-full border border-neutral-700 px-2 py-1 outline-none'
+                    className=' w-full border border-neutral-700 px-2 py-1 outline-none rounded-full'
                 />
             </div>
         </div>
