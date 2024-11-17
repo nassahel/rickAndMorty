@@ -9,14 +9,14 @@ import ResgisterForm from '../components/ResgisterForm'
 const Login = () => {
     return (
         <div className='flex h-screen bg-purple-950'>
-            <div className='w-1/2 flex flex-col gap-10 items-center justify-center'>
+            <div className='lg:w-1/2 flex flex-col gap-10 items-center justify-center'>
                 <img src={title} alt="Title: Rick and Morty" className='w-[25rem]' />
                 <Routes>
                     <Route path='/' element={<LoginForm />} />
                     <Route path='/register' element={<ResgisterForm />} />
                 </Routes>
             </div>
-            <div className='w-1/2'>
+            <div className='hidden lg:block w-1/2'>
                 <img src={wallpapper} alt="" className='h-full ms-auto object-cover' />
             </div>
 
