@@ -2,30 +2,24 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const ResgisterForm = () => {
-    const inputStyle = 'border-b border-gray-900 mb-4 p-1  outline-none rounded-full px-3 '
+    const inputStyle = 'shadow-inner border mb-4 p-1  outline-none rounded-xl px-3 '
     const [error, setError] = useState(false);
     const [emailError, setEmailError] = useState(false);
-    const navigate = useNavigate()
-
-
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         nombre: '',
         email: '',
         pass: ''
     })
 
-
     const changeData = (e) => {
         const { name, value } = e.target;
-
         setUser((prevUser) => ({
             ...prevUser, [name]: value
         }))
     }
 
-
     const handleRegister = () => {
-
         if (user.nombre !== '' && user.email !== '' && user.pass !== '') {
             const usersData = JSON.parse(localStorage.getItem('users'));
             console.log(usersData);
@@ -36,7 +30,6 @@ const ResgisterForm = () => {
                 users.push(user)
                 localStorage.setItem('users', JSON.stringify(users))
             } else {
-
                 const emailExists = usersData.some((existingUser) => existingUser.email === user.email)
                 if (emailExists) {
                     setEmailError(true)
@@ -46,14 +39,10 @@ const ResgisterForm = () => {
                 }
             }
             navigate('/')
-
         } else {
             setError(true)
         }
-
-
     }
-
 
 
     return (

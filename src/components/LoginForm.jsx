@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
-    const inputStyle = 'border-b border-gray-900 mb-4 p-1  outline-none rounded-xl px-3 '
+    const inputStyle = 'shadow-inner border mb-4 p-1  outline-none rounded-xl px-3 '
     const [loggedUser, setLoggedUser] = useState({
         email: '',
         pass: ''
@@ -10,17 +10,12 @@ const LoginForm = () => {
     const navigate = useNavigate()
 
     const handleLogin = () => {
-        
         localStorage.setItem('LSloggedUser', JSON.stringify(loggedUser))
         navigate('/home')
-
-
     }
-
 
     const HandleUserData = (e) => {
         const { value, name } = e.target;
-
         setLoggedUser((prevState) => ({
             ...prevState, [name]: value
         }))

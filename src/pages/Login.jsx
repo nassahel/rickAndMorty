@@ -19,9 +19,6 @@ const Login = () => {
             <div className='hidden lg:block w-1/2'>
                 <img src={wallpapper} alt="" className='h-full ms-auto object-cover' />
             </div>
-
-
-
         </div>
     )
 }

@@ -3,16 +3,13 @@ import title from '../assets/img/title.png'
 import rmgif from '../assets/img/rm.gif'
 import { useNavigate } from 'react-router-dom'
 
-
-
 const Header = ({ searchInput, setSearchInput }) => {
     const navigate = useNavigate()
 
-const handleCloseSession = () => {
-    localStorage.removeItem('LSloggedUser')
-    navigate('/')
-}
-
+    const handleCloseSession = () => {
+        localStorage.removeItem('LSloggedUser')
+        navigate('/')
+    }
 
     return (
         <div className='flex flex-col lg:flex-row items-end justify-between pe-5 py-5 text-black bg-neutral-900'>
@@ -27,7 +24,7 @@ const handleCloseSession = () => {
                     value={searchInput}
                     type="text"
                     placeholder='Buscar personaje...'
-                    className=' w-full border border-neutral-700 px-2 py-1 outline-none rounded-full'
+                    className=' w-full border px-2 py-1 outline-none rounded-full shadow-inner'
                 />
             </div>
         </div>
