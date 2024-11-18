@@ -6,8 +6,8 @@ const CharCard = ({ item, editable = false, handleEdit }) => {
 
     return (
         <div className='flex text-sm relative bg-gradient-to-r h-[10rem] rounded-xl overflow-hidden from-purple-900 to-purple-700 text-white  shadow-md hover:scale-105 duration-200 hover:shadow-lg'>
-            <div className='w-[10rem]'>
-                <img src={item.image} alt={item.name} className='object-cover w-full h-full' />
+            <div className='w-[10rem] h-full aspect-square'>
+                <img src={item.image} alt={item.name} className='object-cover h-full w-full' />
             </div>
             <div className='p-3'>
                 <h2 className='text-lg font-semibold'>{item.name}</h2>
