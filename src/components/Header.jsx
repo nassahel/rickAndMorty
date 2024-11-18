@@ -12,7 +12,7 @@ const Header = ({ searchInput, setSearchInput }) => {
     }
 
     return (
-        <div className='flex flex-col lg:flex-row items-end justify-between pe-5 py-5 text-black bg-neutral-900'>
+        <div className='flex flex-col lg:flex-row items-center lg:items-end justify-between lg:pe-5 py-5 text-black bg-neutral-900'>
             <div className='flex items-center'>
                 <img src={title} alt="Title: Rick and Morty" className='w-[15rem]' />
                 <img src={rmgif} alt="rik and morty" className='w-24' />
